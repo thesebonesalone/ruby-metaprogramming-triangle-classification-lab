@@ -6,17 +6,9 @@ class Triangle
     if   @sides.any?{|side| side <= 0 || side >= (@sides.sum - side)}
       raise TriangleError
     else
-      
+    @kind = [:equilateral, :isosceles, :scalene][@sides.uniq.length - 1]
     end
-    @kind = [nil, :equilateral, :isosceles,:scalene][@sides.uniq.length]
   end
-    
-
-
-
-
-
-
   class TriangleError < StandardError
     def message
       "Triangle is invalid."
